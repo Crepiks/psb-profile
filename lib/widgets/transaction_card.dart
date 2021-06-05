@@ -1,9 +1,12 @@
 import "package:flutter/material.dart";
 
 class TransactionCard extends StatelessWidget {
-  late final int? id;
+  late final String? name;
+  late final String? date;
+  late final String? value;
 
-  TransactionCard({Key? key, this.id}) : super(key: key);
+  TransactionCard({Key? key, this.name, this.date, this.value})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +34,12 @@ class TransactionCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Транзакция #" + id.toString(),
+                          name ?? "",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          "06.05.2020",
+                          date ?? "",
                           style: TextStyle(fontSize: 14),
                         )
                       ],
@@ -46,7 +49,7 @@ class TransactionCard extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  "+250 USA",
+                  value ?? "",
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w500,

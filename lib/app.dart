@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import "package:micro_mobile/micro_mobile.dart";
+import "./models/transaction_model.dart";
 import "./widgets/transaction_card.dart";
 
 class ProfileScreen extends StatefulWidget {
@@ -14,6 +15,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final transactions = <Transaction>[];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,13 +55,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Padding(
                 padding: EdgeInsets.only(top: 30, bottom: 30),
                 child: ListView.builder(
-                    itemCount: 5,
+                    itemCount: transactions.length,
                     itemBuilder: (context, index) {
+                      var transaction = transactions[index];
+
                       return Padding(
                         padding: EdgeInsets.only(top: 10, bottom: 10),
                         child: TransactionCard(
-                          id: index,
-                        ),
+                            name: transaction.name,
+                            date: transaction.date,
+                            value: transaction.value),
                       );
                     })),
           ),
@@ -77,12 +83,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   style: TextStyle(fontSize: 18),
                 ),
                 onPressed: () {
-                  widget.store.emit('onClick', "Hello");
                   print("Button is pressed");
+                  addTransation(transactions.length);
                 }),
           ),
         ],
       ),
     ));
+  }
+
+  void addTransation(int id) {
+    setState(() {
+      transactions.add(Transaction(
+          name: "Транзакция # " + id.toString(),
+          date: "06.05.2021",
+          value: "+250 USA"));
+    });
   }
 }
