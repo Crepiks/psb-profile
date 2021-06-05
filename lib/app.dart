@@ -50,28 +50,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(top: 30, bottom: 30),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
-                    child: TransactionCard(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
-                    child: TransactionCard(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
-                    child: TransactionCard(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
-                    child: TransactionCard(),
-                  ),
-                ],
-              ),
-            ),
+                padding: EdgeInsets.only(top: 30, bottom: 30),
+                child: ListView.builder(
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(top: 10, bottom: 10),
+                        child: TransactionCard(
+                          id: index,
+                        ),
+                      );
+                    })),
           ),
           SizedBox(
             height: 60,

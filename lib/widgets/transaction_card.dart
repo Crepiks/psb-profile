@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
 
 class TransactionCard extends StatelessWidget {
-  const TransactionCard({Key? key}) : super(key: key);
+  late final int? id;
+
+  TransactionCard({Key? key, this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class TransactionCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Транзакция #0",
+                          "Транзакция #" + id.toString(),
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w500),
                         ),
