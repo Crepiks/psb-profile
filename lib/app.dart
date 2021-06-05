@@ -40,7 +40,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      image: Image.asset('assets/images/avatar.jpg').image,
+                      image: Image.network(
+                              'https://sun2.beeline-kz.userapi.com/s/v1/ig1/EyeumO0umDMi186TFU6iyd4XmAkXdJR1i0tteKtWSDPB3VrysjQ20qLmzDobDExc2eaqgpc4.jpg?size=400x0&quality=96&crop=1220,360,624,721&ava=1')
+                          .image,
                       fit: BoxFit.fill),
                 ),
               ),
