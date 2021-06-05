@@ -17,8 +17,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Padding(
+    return Scaffold(
+        body: SafeArea(
+            child: Padding(
       padding: EdgeInsets.only(right: 20, left: 20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,7 +89,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ],
       ),
-    ));
+    )));
   }
 
   void addTransation(int id) {

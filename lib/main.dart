@@ -21,12 +21,9 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-          body: SafeArea(
-        child: ProfileScreen(
-          store: store,
-        ),
-      )),
+      home: ProfileScreen(
+        store: store,
+      ),
     );
   }
 }
