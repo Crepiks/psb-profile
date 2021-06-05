@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import "package:micro_mobile/micro_mobile.dart";
-import "./models/transaction_model.dart";
+import "package:main/models/transaction_model.dart";
 import "./widgets/transaction_card.dart";
 
 class ProfileScreen extends StatefulWidget {
@@ -26,13 +26,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
         children: [
           Column(
             children: [
-              Container(
-                height: 60,
-                alignment: Alignment.center,
-                child: Text(
-                  "Профиль",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        widget.store.emit('NAVIGATE_POP');
+                      },
+                      icon: Icon(Icons.arrow_back)),
+                  Container(
+                    height: 60,
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Профиль",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        widget.store.emit('NAVIGATE_PAYMENTS');
+                      },
+                      icon: Icon(Icons.credit_card)),
+                ],
               ),
               Container(
                 margin: EdgeInsets.only(top: 40, bottom: 20),

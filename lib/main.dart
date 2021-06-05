@@ -11,6 +11,8 @@ class App extends StatelessWidget {
 
   App() {
     store.registerEvent('TRANSACTION_ADD');
+    store.registerEvent('NAVIGATE_POP');
+    store.registerEvent('NAVIGATE_PAYMENTS');
   }
 
   @override
