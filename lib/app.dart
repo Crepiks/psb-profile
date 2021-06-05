@@ -19,13 +19,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            height: 60,
-            alignment: Alignment.center,
-            child: Text(
-              "Профиль",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-            ),
+          Column(
+            children: [
+              Container(
+                height: 60,
+                alignment: Alignment.center,
+                child: Text(
+                  "Профиль",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 40, bottom: 20),
+                width: 200,
+                height: 200,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      image: Image.asset('assets/images/avatar.jpg').image,
+                      fit: BoxFit.fill),
+                ),
+              ),
+              Text("Саяжан Онласын",
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500)),
+              Text("Москва, Россия", style: TextStyle(fontSize: 16))
+            ],
           ),
           Padding(
             padding: EdgeInsets.only(right: 20, left: 20),
