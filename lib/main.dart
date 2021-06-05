@@ -9,10 +9,15 @@ void main() {
 class App extends StatelessWidget {
   final Store store = Store();
 
+  App() {
+    store.registerEvent('TRANSACTION_ADD');
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Profile App",
+      debugShowCheckedModeBanner: false,
+      title: "Profile Micro App",
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

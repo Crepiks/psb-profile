@@ -4,11 +4,9 @@ import "./models/transaction_model.dart";
 import "./widgets/transaction_card.dart";
 
 class ProfileScreen extends StatefulWidget {
-  late final Store store;
+  final Store store;
 
-  ProfileScreen({store}) {
-    this.store = store;
-  }
+  ProfileScreen({required this.store});
 
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -83,7 +81,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   style: TextStyle(fontSize: 18),
                 ),
                 onPressed: () {
-                  print("Button is pressed");
                   addTransation(transactions.length);
                 }),
           ),
@@ -93,11 +90,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void addTransation(int id) {
+    var transaction = Transaction(
+        name: "Транзакция #" + id.toString(),
+        date: "06.05.2021",
+        value: "+250 USA");
+
+    widget.store.emit('TRANSACTION_ADD', transaction);
+
     setState(() {
-      transactions.add(Transaction(
-          name: "Транзакция # " + id.toString(),
-          date: "06.05.2021",
-          value: "+250 USA"));
+      transactions.add(transaction);
     });
   }
 }
