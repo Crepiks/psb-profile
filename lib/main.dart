@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
+import "package:micro_mobile/micro_mobile.dart";
 import 'package:profile/app.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(App());
 }
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
+  final Store store = Store();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: "Profile App",
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-          appBar: AppBar(
-            title: Text("Profile Application"),
-          ),
-          body: ProfileScreen()),
+          body: SafeArea(
+        child: ProfileScreen(
+          store: store,
+        ),
+      )),
     );
   }
 }
