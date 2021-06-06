@@ -31,7 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   IconButton(
                       onPressed: () {
-                        widget.store.emit('NAVIGATE_POP');
+                        Navigator.pop(context);
                       },
                       icon: Icon(Icons.arrow_back)),
                   Container(
@@ -45,7 +45,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   IconButton(
                       onPressed: () {
-                        widget.store.emit('NAVIGATE_PAYMENTS');
+                        widget.store.emit('NAVIGATE_PAYMENTS', context);
                       },
                       icon: Icon(Icons.credit_card)),
                 ],
@@ -119,5 +119,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       transactions.add(transaction);
     });
+  }
+}
+
+class AddTransactionButton extends StatelessWidget {
+  final Store store;
+
+  AddTransactionButton({Key? key, required this.store}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        height: 60,
+        width: double.infinity,
+        child: ElevatedButton(
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14.0),
+                )),
+                elevation: MaterialStateProperty.all<double>(0)),
+            child: Text(
+              "Добавить платеж",
+              style: TextStyle(fontSize: 18),
+            ),
+            onPressed: () {
+              addTransation(0);
+            }));
+  }
+
+  void addTransation(int id) {
+    var transaction = Transaction(
+        name: "Транзакция #" + id.toString(),
+        date: "06.05.2021",
+        value: "+250 USA");
+
+    store.emit('TRANSACTION_ADD', transaction);
   }
 }
